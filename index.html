@@ -4,321 +4,148 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#111827">
-<title>East Izakaya — Menu Terms Trainer</title>
+<title>East Izakaya — Menu Categories Trainer</title>
 <style>
-  *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#f3f4f6;color:#111827}
-  header{background:#111827;color:white;padding:18px 16px 16px;position:sticky;top:0;z-index:10}
-  h1{font-size:22px;margin:0 0 4px}
-  .sub{font-size:13px;color:#cbd5e1}
-  .wrap{max-width:680px;margin:auto;padding:14px 12px 90px}
-  .tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:14px}
-  button{border:0;border-radius:11px;padding:12px 10px;font-weight:700;font-size:14px;cursor:pointer}
-  .tab{background:#e5e7eb;color:#374151}
-  .tab.active{background:#111827;color:white}
-  .card{background:white;border-radius:16px;padding:18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-  .label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;font-weight:800}
-  .term{font-size:26px;font-weight:800;margin:5px 0 8px}
-  .definition{font-size:16px;line-height:1.5;color:#374151}
-  .example{margin-top:12px;padding:11px 12px;background:#f9fafb;border-radius:10px;font-size:14px;line-height:1.45}
-  .pill{display:inline-block;font-size:11px;font-weight:800;padding:4px 8px;border-radius:999px;background:#e5e7eb;margin:4px 4px 0 0}
-  .nav{display:flex;gap:8px;margin-top:14px}
-  .nav button{flex:1;background:#111827;color:white}
-  .nav button.secondary{background:#e5e7eb;color:#111827}
-  .progress{height:7px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:10px 0 16px}
-  .progress i{display:block;height:100%;background:#111827;width:0}
-  .choice{width:100%;text-align:left;background:#f3f4f6;margin-top:8px;font-weight:600}
-  .choice.correct{background:#dcfce7;color:#166534}
-  .choice.wrong{background:#fee2e2;color:#991b1b}
-  .feedback{margin-top:12px;font-weight:700}
-  .search{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:11px;font-size:16px;margin-bottom:12px}
-  .term-list{display:grid;gap:8px}
-  .term-row{background:#fff;border-radius:12px;padding:13px}
-  .term-row b{display:block;margin-bottom:3px}
-  .term-row span{font-size:13px;color:#4b5563}
-  .small{font-size:12px;color:#6b7280}
-  .score{text-align:center;font-size:30px;font-weight:800;padding:18px}
-  .hide{display:none!important}
+*{box-sizing:border-box}
+body{margin:0;background:#f3f4f6;color:#111827;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+header{background:#111827;color:#fff;padding:18px 16px;position:sticky;top:0;z-index:10}
+h1{font-size:21px;margin:0 0 4px}.sub{font-size:13px;color:#cbd5e1}
+.wrap{max-width:680px;margin:auto;padding:14px 12px 80px}
+.tabs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:14px}
+button{border:0;border-radius:11px;padding:12px 10px;font-weight:700;font-size:14px;cursor:pointer}
+.tab{background:#e5e7eb;color:#374151}.tab.active{background:#111827;color:#fff}
+.card{background:#fff;border-radius:16px;padding:18px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.label{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;font-weight:800}
+.term{font-size:27px;font-weight:800;margin:5px 0 10px}
+.definition{font-size:16px;line-height:1.55;color:#374151}
+.example{margin-top:13px;padding:12px;background:#f9fafb;border-radius:10px;font-size:14px;line-height:1.45}
+.nav{display:flex;gap:8px;margin-top:15px}.nav button{flex:1;background:#111827;color:#fff}
+.nav .secondary{background:#e5e7eb;color:#111827}
+.progress{height:7px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin:10px 0 16px}
+.progress i{display:block;height:100%;background:#111827;width:0}
+.search{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:11px;font-size:16px;margin-bottom:12px}
+.row{background:#fff;border-radius:12px;padding:14px;margin-bottom:8px}
+.row b{display:block;font-size:16px;margin-bottom:4px}.row span{font-size:13px;color:#4b5563}
+.choice{width:100%;text-align:left;background:#f3f4f6;margin-top:8px;line-height:1.35}
+.choice.correct{background:#dcfce7;color:#166534}.choice.wrong{background:#fee2e2;color:#991b1b}
+.feedback{margin-top:12px;font-weight:700}.small{font-size:12px;color:#6b7280}
+.hide{display:none!important}
+.score{text-align:center;font-size:30px;font-weight:800;padding:12px}
 </style>
 </head>
 <body>
 <header>
-  <h1>East Izakaya — Menu Terms</h1>
-  <div class="sub">Learn the vocabulary behind the menu before memorizing every dish.</div>
+<h1>East Izakaya — Menu Categories</h1>
+<div class="sub">Learn what each section means before memorizing individual dishes.</div>
 </header>
 
 <div class="wrap">
-  <div class="tabs">
-    <button class="tab active" onclick="showTab('learn',this)">Learn</button>
-    <button class="tab" onclick="showTab('browse',this)">Browse</button>
-    <button class="tab" onclick="showTab('quiz',this)">Quiz</button>
-  </div>
+<div class="tabs">
+<button class="tab active" onclick="showTab('learn',this)">Learn</button>
+<button class="tab" onclick="showTab('browse',this)">Browse</button>
+<button class="tab" onclick="showTab('quiz',this)">Quiz</button>
+</div>
 
-  <section id="learn">
-    <div class="card">
-      <div class="label">Term <span id="learnNum"></span></div>
-      <div class="term" id="learnTerm"></div>
-      <div class="definition" id="learnDef"></div>
-      <div class="example" id="learnExample"></div>
-      <div id="learnTags"></div>
-      <div class="nav">
-        <button class="secondary" onclick="prevTerm()">← Previous</button>
-        <button onclick="nextTerm()">Next →</button>
-      </div>
-    </div>
-    <div class="small">Tip: Say the term out loud, then explain it in your own words.</div>
-  </section>
+<section id="learn">
+<div class="card">
+<div class="label">Category <span id="num"></span></div>
+<div class="term" id="term"></div>
+<div class="definition" id="def"></div>
+<div class="example" id="example"></div>
+<div class="nav">
+<button class="secondary" onclick="prev()">← Previous</button>
+<button onclick="next()">Next →</button>
+</div>
+</div>
+<div class="small">Goal: be able to explain what the category is without naming individual menu items.</div>
+</section>
 
-  <section id="browse" class="hide">
-    <input id="search" class="search" placeholder="Search terms..." oninput="renderList()">
-    <div id="termList" class="term-list"></div>
-  </section>
+<section id="browse" class="hide">
+<input id="search" class="search" placeholder="Search categories..." oninput="renderList()">
+<div id="list"></div>
+</section>
 
-  <section id="quiz" class="hide">
-    <div class="card">
-      <div class="label">Menu Terms Quiz</div>
-      <div id="quizProgress" class="small"></div>
-      <div class="progress"><i id="bar"></i></div>
-      <div class="term" id="question"></div>
-      <div id="choices"></div>
-      <div id="feedback" class="feedback"></div>
-      <div class="nav">
-        <button id="nextQ" class="hide" onclick="nextQuestion()">Next →</button>
-      </div>
-    </div>
-    <div id="scoreCard" class="card hide"></div>
-  </section>
+<section id="quiz" class="hide">
+<div class="card">
+<div class="label">Category Definition Quiz</div>
+<div id="qprogress" class="small"></div>
+<div class="progress"><i id="bar"></i></div>
+<div class="term" id="question"></div>
+<div id="choices"></div>
+<div id="feedback" class="feedback"></div>
+<div class="nav"><button id="nextq" class="hide" onclick="nextQuestion()">Next →</button></div>
+</div>
+<div id="scorecard" class="card hide"></div>
+</section>
 </div>
 
 <script>
-const terms = [
-  {
-    t:"Torched",
-    d:"A menu preparation in which the topping is briefly exposed to a flame/torch, giving it a seared surface and cooked or smoky character.",
-    e:"East's Torched Salmon Roll uses torched salmon as the topping.",
-    tags:["Preparation","Torched section"]
-  },
-  {
-    t:"Flame-seared",
-    d:"The surface of an ingredient is quickly seared with a flame. On the menu, this is used for torched sushi pieces.",
-    e:"Torched Salmon Sushi = flame-seared salmon on rice.",
-    tags:["Preparation","Sushi"]
-  },
-  {
-    t:"Poke",
-    d:"A Hawaiian-style dish built around seasoned pieces of raw fish or other ingredients, usually served with a variety of fresh toppings and a base.",
-    e:"East's Salmon Poke Bowl is served over sushi rice with avocado, edamame, mango and other toppings.",
-    tags:["Dish type","Bowl"]
-  },
-  {
-    t:"Poke Bowl",
-    d:"A bowl-style meal combining a base, a main ingredient and multiple toppings/sauces. East's versions use sushi rice.",
-    e:"Salmon, Tuna and Fruit Poke Bowls are all listed at $17 on the menu.",
-    tags:["Dish type","Bowl"]
-  },
-  {
-    t:"Sushi",
-    d:"A dish centered on vinegared sushi rice, served with fish, seafood or other toppings.",
-    e:"Torched Salmon Sushi is salmon placed on top of rice.",
-    tags:["Dish type"]
-  },
-  {
-    t:"Roll",
-    d:"Sushi prepared by rolling ingredients together, typically with rice and fillings, then cutting it into pieces.",
-    e:"The Torched White Tuna Roll is served as 8 pieces.",
-    tags:["Dish type","8 pieces"]
-  },
-  {
-    t:"Crabmeat",
-    d:"Crab meat used as an ingredient or filling. In East's torched rolls, crabmeat is part of the common roll base and can also be the torched topping.",
-    e:"Torched Spicy Crab Roll has crabmeat inside and torched crabmeat on top.",
-    tags:["Ingredient","Common roll base"]
-  },
-  {
-    t:"Fish Egg",
-    d:"Small edible fish eggs used as a topping, adding a briny flavor and small pop of texture.",
-    e:"Fish egg is part of the common base for East's torched rolls and tops the salmon poke bowl.",
-    tags:["Ingredient","Topping"]
-  },
-  {
-    t:"Nori",
-    d:"Thin sheets of dried seaweed commonly used in sushi. Chopped nori is used as a finishing topping in the poke bowls.",
-    e:"Poke bowls are topped with chopped nori.",
-    tags:["Ingredient","Seaweed"]
-  },
-  {
-    t:"Edamame",
-    d:"Young green soybeans, usually served cooked and lightly salted. They add a mild, fresh, slightly nutty flavor.",
-    e:"Edamame is included in the Salmon, Tuna and Fruit Poke Bowls.",
-    tags:["Ingredient","Poke bowl"]
-  },
-  {
-    t:"Seaweed Salad",
-    d:"A seasoned salad made from edible seaweed, typically offering a fresh, slightly sweet, savory and ocean-like flavor.",
-    e:"Seaweed salad is included in East's poke bowls.",
-    tags:["Ingredient","Poke bowl"]
-  },
-  {
-    t:"Spring Mix",
-    d:"A blend of tender salad greens. On East's menu it forms part of the fresh vegetable/greens component of the poke bowls.",
-    e:"Spring mix is included in the Salmon, Tuna and Fruit Poke Bowls.",
-    tags:["Ingredient","Poke bowl"]
-  },
-  {
-    t:"Tempura Bits",
-    d:"Small crispy pieces of tempura batter used as a crunchy topping.",
-    e:"Poke bowls are topped with tempura bits for added crunch.",
-    tags:["Ingredient","Crunch"]
-  },
-  {
-    t:"Rice Bits",
-    d:"Small crunchy pieces of rice used as a topping, adding texture to a poke bowl.",
-    e:"Salmon Poke Bowl is topped with rice bits and tempura bits.",
-    tags:["Ingredient","Crunch"]
-  },
-  {
-    t:"BBQ Eel Sauce",
-    d:"A sweet-savory, glossy sauce commonly paired with eel and sushi. It adds sweetness and richness.",
-    e:"The torched rolls are generally finished with mayo and BBQ eel sauce.",
-    tags:["Sauce","Sweet-savory"]
-  },
-  {
-    t:"Spicy Mayo",
-    d:"Mayonnaise-based sauce with a spicy kick. It is used on the Torched Spicy Crab Roll instead of regular mayo.",
-    e:"Torched Spicy Crab Roll = spicy mayo + BBQ eel sauce.",
-    tags:["Sauce","Spicy"]
-  },
-  {
-    t:"Avocado Sauce",
-    d:"A creamy sauce made with avocado. East's poke bowls are drizzled with homemade avocado sauce.",
-    e:"Salmon Poke Bowl is drizzled with homemade avocado sauce.",
-    tags:["Sauce","Poke bowl"]
-  },
-  {
-    t:"Sushi Rice",
-    d:"Short-grain rice prepared specifically for sushi, traditionally seasoned with a lightly sweet and acidic mixture.",
-    e:"All of the listed poke bowls are built on sushi rice.",
-    tags:["Base","Rice"]
-  },
-  {
-    t:"White Tuna",
-    d:"The menu's white-tuna ingredient used as a torched topping. It is distinct from the red tuna items listed on the menu.",
-    e:"Torched White Tuna Roll and Torched White Tuna Sushi both feature white tuna.",
-    tags:["Protein","Torched"]
-  },
-  {
-    t:"Red Tuna",
-    d:"The tuna used in the menu's red-tuna items. It appears both as a torched topping and as the main ingredient in Tuna Poke Bowl.",
-    e:"Torched Red Tuna Roll, Torched Red Tuna Sushi and Tuna Poke Bowl.",
-    tags:["Protein","Tuna"]
-  },
-  {
-    t:"Scallop",
-    d:"A shellfish with a mild, slightly sweet flavor and tender texture. On this menu it appears as a torched roll topping.",
-    e:"Torched Scallop Roll features torched scallop on top.",
-    tags:["Protein","Shellfish"]
-  },
-  {
-    t:"Salmon",
-    d:"A rich, fatty fish with a buttery texture. It appears in both torched sushi/rolls and the Salmon Poke Bowl.",
-    e:"Torched Salmon Roll, Torched Salmon Sushi and Salmon Poke Bowl.",
-    tags:["Protein","Fish"]
-  },
-  {
-    t:"Red Snapper",
-    d:"A mild, relatively lean fish. On East's menu it is used as a flame-seared torched sushi topping.",
-    e:"Torched Red Snapper Sushi is served as 2 pieces.",
-    tags:["Protein","Fish"]
-  },
-  {
-    t:"Squid",
-    d:"A seafood ingredient with a firm, springy texture. On this menu it appears as a torched sushi topping.",
-    e:"Torched Squid Sushi is served as 2 pieces.",
-    tags:["Protein","Seafood"]
-  },
-  {
-    t:"Avocado",
-    d:"A creamy fruit with mild flavor and rich texture. It is a recurring ingredient in both torched rolls and poke bowls.",
-    e:"The common torched roll base includes avocado; poke bowls also contain avocado.",
-    tags:["Ingredient","Common"]
-  },
-  {
-    t:"Mango",
-    d:"A sweet, juicy tropical fruit. It adds sweetness and fruitiness to the poke bowls.",
-    e:"Mango is included in the Salmon, Tuna and Fruit Poke Bowls.",
-    tags:["Ingredient","Fruit"]
-  }
+const categories=[
+{t:"Hand Roll",d:"A single-serving sushi roll prepared in a cone shape, typically wrapped in seaweed with sushi rice and fillings. The menu lists these as 1 piece each.",e:"Think: cone-shaped, hand-held sushi; one piece per order."},
+{t:"Maki Roll",d:"A traditional rolled sushi format in which ingredients are rolled together with sushi rice and seaweed, then cut into individual pieces. The menu lists these as 8 pieces each.",e:"Think: standard cut sushi roll; 8 pieces per order."},
+{t:"Special Roll",d:"A more elaborate sushi-roll category featuring combinations and preparations beyond the basic Maki Roll selection. These are generally designed as specialty combinations and are listed as 8-piece rolls.",e:"Think: upgraded/custom-style rolls with more elaborate combinations."},
+{t:"Signature Roll",d:"The restaurant's featured premium-style roll category. These are more elaborate rolls with distinctive combinations and are listed as 8 pieces each.",e:"Think: signature creations that are more distinctive than the regular Maki selection."},
+{t:"Torched",d:"A category centered on sushi and rolls finished with a flame-seared or torched preparation. The menu includes both 8-piece rolls and 2-piece sushi.",e:"Think: flame-seared preparation is the defining feature, not the type of protein."},
+{t:"Sushi Bar",d:"The section for individual sushi-bar selections, including Sashimi, Nigiri and specialty preparations such as Tataki.",e:"Think: individual pieces/servings rather than rolled sushi."},
+{t:"Sashimi",d:"Sushi-bar style seafood served without sushi rice. On this menu, sashimi is priced by order and listed as 3 pieces.",e:"Think: sliced seafood without rice."},
+{t:"Nigiri",d:"A sushi-bar preparation consisting of a topping served on a small portion of sushi rice. The menu generally lists Nigiri as 2 pieces.",e:"Think: topping + a small rice base; usually 2 pieces."},
+{t:"Tataki",d:"A preparation in which the outside of the main food is briefly seared while the interior remains relatively rare, then served in slices with sauce.",e:"Think: lightly seared exterior, sliced and served as a specialty appetizer/sushi-bar preparation."},
+{t:"Sushi Pizza",d:"A specialty menu category built around a crispy hash-brown-style base with sushi toppings and sauces.",e:"Think: sushi ingredients presented in a pizza-like format rather than a roll."},
+{t:"Combo",d:"A value-oriented combination meal that groups multiple sushi selections together. The menu includes Sushi, Sashimi and Maki combinations, with miso soup and seaweed salad included.",e:"Think: bundled meal that combines multiple menu formats."},
+{t:"Poke Bowl",d:"A bowl-style dish served over sushi rice with a mixture of toppings, finishing elements and sauce. The menu offers Salmon, Tuna and Fruit versions.",e:"Think: deconstructed sushi in a bowl rather than a roll."}
 ];
 
-let current=0, qIndex=0, score=0, answered=false;
+let current=0,q=0,score=0,answered=false;
 const $=id=>document.getElementById(id);
 
+function render(){
+ const x=categories[current];
+ $("num").textContent=`${current+1} of ${categories.length}`;
+ $("term").textContent=x.t;
+ $("def").textContent=x.d;
+ $("example").innerHTML="<b>Easy way to remember:</b> "+x.e;
+}
+function next(){current=(current+1)%categories.length;render()}
+function prev(){current=(current-1+categories.length)%categories.length;render()}
 function showTab(tab,btn){
-  ["learn","browse","quiz"].forEach(x=>$(x).classList.toggle("hide",x!==tab));
-  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-  btn.classList.add("active");
-  if(tab==="learn") renderLearn();
-  if(tab==="browse") renderList();
-  if(tab==="quiz") startQuiz();
+ ["learn","browse","quiz"].forEach(x=>$(x).classList.toggle("hide",x!==tab));
+ document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");
+ if(tab==="browse")renderList(); if(tab==="quiz")startQuiz();
 }
-function renderLearn(){
-  const x=terms[current];
-  $("learnNum").textContent=`${current+1} of ${terms.length}`;
-  $("learnTerm").textContent=x.t;
-  $("learnDef").textContent=x.d;
-  $("learnExample").innerHTML="<b>Menu connection:</b> "+x.e;
-  $("learnTags").innerHTML=x.tags.map(t=>`<span class="pill">${t}</span>`).join("");
-}
-function nextTerm(){current=(current+1)%terms.length;renderLearn()}
-function prevTerm(){current=(current-1+terms.length)%terms.length;renderLearn()}
 function renderList(){
-  const s=$("search").value.toLowerCase();
-  $("termList").innerHTML=terms.filter(x=>(x.t+" "+x.d+" "+x.e).toLowerCase().includes(s))
-    .map((x,i)=>`<div class="term-row" onclick="jumpTo('${x.t.replace(/'/g,"\\'")}')"><b>${x.t}</b><span>${x.d}</span></div>`).join("");
-}
-function jumpTo(t){
-  current=terms.findIndex(x=>x.t===t);
-  document.querySelectorAll(".tab")[0].click();
+ const s=$("search").value.toLowerCase();
+ $("list").innerHTML=categories.filter(x=>(x.t+" "+x.d).toLowerCase().includes(s))
+ .map(x=>`<div class="row"><b>${x.t}</b><span>${x.d}</span></div>`).join("");
 }
 function startQuiz(){
-  if(qIndex>=terms.length) return;
-  answered=false;
-  $("scoreCard").classList.add("hide");
-  $("question").textContent=`What does “${terms[qIndex].t}” mean?`;
-  $("quizProgress").textContent=`Question ${qIndex+1} of ${terms.length}`;
-  $("bar").style.width=((qIndex)/terms.length*100)+"%";
-  $("feedback").textContent="";
-  $("nextQ").classList.add("hide");
-  let pool=terms.filter((_,i)=>i!==qIndex).sort(()=>Math.random()-0.5).slice(0,3).map(x=>x.d);
-  let opts=[terms[qIndex].d,...pool].sort(()=>Math.random()-0.5);
-  $("choices").innerHTML=opts.map(o=>`<button class="choice" onclick="answer(this,${o===terms[qIndex].d})">${o}</button>`).join("");
+ if(q>=categories.length)return;
+ answered=false;$("scorecard").classList.add("hide");
+ const x=categories[q];
+ $("qprogress").textContent=`Question ${q+1} of ${categories.length}`;
+ $("bar").style.width=(q/categories.length*100)+"%";
+ $("question").textContent=`What is “${x.t}”?`;
+ $("feedback").textContent="";$("nextq").classList.add("hide");
+ let opts=[x.d,...categories.filter((_,i)=>i!==q).sort(()=>Math.random()-.5).slice(0,3).map(x=>x.d)].sort(()=>Math.random()-.5);
+ $("choices").innerHTML=opts.map(o=>`<button class="choice" onclick="answer(this,${o===x.d})">${o}</button>`).join("");
 }
 function answer(btn,correct){
-  if(answered)return;
-  answered=true;
-  document.querySelectorAll(".choice").forEach(b=>b.disabled=true);
-  if(correct){score++;btn.classList.add("correct");$("feedback").textContent="✓ Correct";}
-  else{
-    btn.classList.add("wrong");
-    $("feedback").textContent="Not quite. The correct definition is shown below.";
-    const correctBtn=[...document.querySelectorAll(".choice")].find(b=>b.textContent===terms[qIndex].d);
-    if(correctBtn)correctBtn.classList.add("correct");
-  }
-  $("nextQ").classList.remove("hide");
+ if(answered)return;answered=true;
+ document.querySelectorAll(".choice").forEach(b=>b.disabled=true);
+ if(correct){score++;btn.classList.add("correct");$("feedback").textContent="✓ Correct";}
+ else{btn.classList.add("wrong");$("feedback").textContent="Not quite. The correct definition is highlighted.";
+ const c=[...document.querySelectorAll(".choice")].find(b=>b.textContent===categories[q].d);if(c)c.classList.add("correct")}
+ $("nextq").classList.remove("hide");
 }
 function nextQuestion(){
-  qIndex++;
-  if(qIndex>=terms.length){
-    $("question").textContent="Quiz complete";
-    $("choices").innerHTML="";
-    $("feedback").textContent="";
-    $("bar").style.width="100%";
-    $("scoreCard").classList.remove("hide");
-    $("scoreCard").innerHTML=`<div class="score">${score} / ${terms.length}</div><div style="text-align:center">Keep reviewing the terms you missed, then run the quiz again.</div><div class="nav"><button onclick="resetQuiz()">Retake Quiz</button></div>`;
-  }else startQuiz();
+ q++;
+ if(q>=categories.length){
+   $("question").textContent="Quiz complete";$("choices").innerHTML="";$("feedback").textContent="";$("bar").style.width="100%";
+   $("scorecard").classList.remove("hide");
+   $("scorecard").innerHTML=`<div class="score">${score} / ${categories.length}</div><div style="text-align:center">Review the categories, then retake the quiz.</div><div class="nav"><button onclick="resetQuiz()">Retake Quiz</button></div>`;
+ }else startQuiz();
 }
-function resetQuiz(){qIndex=0;score=0;startQuiz()}
-renderLearn();
+function resetQuiz(){q=0;score=0;startQuiz()}
+render();
 </script>
 </body>
 </html>
